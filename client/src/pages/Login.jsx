@@ -47,7 +47,7 @@ function Login() {
     try {
       setLoading(true)
 
-      const response = await axios.post('http://localhost:5000/login', formData)
+      const response = await axios.post('https://netflix-login-backend-dp7p.onrender.com/', formData)
 
       if (response.data.success) {
         navigate('/dashboard')
