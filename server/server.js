@@ -7,13 +7,10 @@ const PORT = 5000
 app.use(cors())
 app.use(express.json())
 
-const mockUser = {
-  email: 'test@netflix.com',
-  password: '123456',
-}
-
 app.post('/login', (req, res) => {
   const { email, password } = req.body
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
   if (!email || !password) {
     return res.status(400).json({
@@ -22,16 +19,26 @@ app.post('/login', (req, res) => {
     })
   }
 
-  if (email === mockUser.email && password === mockUser.password) {
-    return res.status(200).json({
-      success: true,
-      message: 'Login successful',
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({
+      success: false,
+      message: 'Please enter a valid email address',
     })
   }
 
-  return res.status(401).json({
-    success: false,
-    message: 'Invalid email or password',
+  if (password.length < 6) {
+    return res.status(400).json({
+      success: false,
+      message: 'Password must be at least 6 characters long',
+    })
+  }
+
+  return res.status(200).json({
+    success: true,
+    message: 'Login successful',
+    user: {
+      email,
+    },
   })
 })
 
