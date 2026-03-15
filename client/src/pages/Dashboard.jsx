@@ -94,7 +94,7 @@ function Dashboard() {
                   alt={movie.title}
                   className="w-full h-64 object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-black via-black/30 to-transparent"></div>
                 <p className="absolute bottom-3 left-3 font-semibold text-white">
                   {movie.title}
                 </p>
@@ -111,7 +111,7 @@ function Dashboard() {
               alt="Continue Watching"
               className="w-full h-72 object-cover opacity-70"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent flex flex-col justify-center px-6">
+            <div className="absolute inset-0 bg-linear-to-r from-black via-black/50 to-transparent flex flex-col justify-center px-6">
               <p className="text-2xl font-bold">Next up: Stranger Things</p>
               <p className="text-gray-300 mt-2">
                 Episode 4 is ready for you to continue.
