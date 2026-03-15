@@ -14,12 +14,36 @@ function Dashboard() {
   }
 
   const movies = [
-    'Stranger Things',
-    'Wednesday',
-    'Money Heist',
-    'The Witcher',
-    'Dark',
-    'Squid Game',
+    {
+      title: 'Stranger Things',
+      image:
+        'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80',
+    },
+    {
+      title: 'Wednesday',
+      image:
+        'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=800&q=80',
+    },
+    {
+      title: 'Money Heist',
+      image:
+        'https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=800&q=80',
+    },
+    {
+      title: 'The Witcher',
+      image:
+        'https://images.unsplash.com/photo-1505685296765-3a2736de412f?auto=format&fit=crop&w=800&q=80',
+    },
+    {
+      title: 'Dark',
+      image:
+        'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=800&q=80',
+    },
+    {
+      title: 'Squid Game',
+      image:
+        'https://images.unsplash.com/photo-1513106580091-1d82408b8cd6?auto=format&fit=crop&w=800&q=80',
+    },
   ]
 
   const userInitial = savedUser?.email?.charAt(0).toUpperCase()
@@ -63,9 +87,17 @@ function Dashboard() {
             {movies.map((movie, index) => (
               <div
                 key={index}
-                className="bg-zinc-900 rounded-lg p-4 h-40 flex items-end shadow-lg hover:scale-105 transition"
+                className="relative rounded-lg overflow-hidden shadow-lg hover:scale-105 transition"
               >
-                <p className="font-semibold">{movie}</p>
+                <img
+                  src={movie.image}
+                  alt={movie.title}
+                  className="w-full h-64 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+                <p className="absolute bottom-3 left-3 font-semibold text-white">
+                  {movie.title}
+                </p>
               </div>
             ))}
           </div>
@@ -73,11 +105,18 @@ function Dashboard() {
 
         <div>
           <h3 className="text-2xl font-semibold mb-4">Continue Watching</h3>
-          <div className="bg-zinc-900 rounded-lg p-6 shadow-lg">
-            <p className="text-lg font-medium">Next up: Stranger Things</p>
-            <p className="text-gray-400 mt-2">
-              Episode 4 is ready for you to continue.
-            </p>
+          <div className="relative bg-zinc-900 rounded-lg overflow-hidden shadow-lg">
+            <img
+              src="https://images.unsplash.com/photo-1518929458119-e5bf444c30f4?auto=format&fit=crop&w=1200&q=80"
+              alt="Continue Watching"
+              className="w-full h-72 object-cover opacity-70"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent flex flex-col justify-center px-6">
+              <p className="text-2xl font-bold">Next up: Stranger Things</p>
+              <p className="text-gray-300 mt-2">
+                Episode 4 is ready for you to continue.
+              </p>
+            </div>
           </div>
         </div>
       </div>
